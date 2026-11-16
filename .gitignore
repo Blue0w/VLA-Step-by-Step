@@ -1,0 +1,31 @@
+# Downloaded datasets and generated experiment artifacts
+/data/
+/outputs/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+
+# Python package build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local credentials and environment settings
+.env
+.env.*
+!.env.example
+
+# Operating-system artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
