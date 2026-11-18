@@ -1,0 +1,7 @@
+{
+  "markdown.copyFiles.destination": {
+    "**/*.md": "${documentWorkspaceFolder}/pictures/${fileName}"
+  },
+  "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
+  "markdown.updateLinksOnFileMove.enabled": "always"
+}

@@ -11,6 +11,8 @@
 ```text
 VLA-Step-by-Step/
 ├── .gitignore                    # 排除数据、实验产物、本地环境和缓存
+├── .vscode/
+│   └── settings.json             # VS Code 将 Markdown 中粘贴的图片保存到 pictures/
 ├── README.md                     # 项目介绍、学习入口、最终效果与运行入口
 ├── pyproject.toml                # Python 包配置与依赖
 ├── docs/
@@ -58,6 +60,7 @@ VLA-Step-by-Step/
 │       ├── policy.py             # 动作头、完整模型组装与动作预测接口
 │       └── training.py           # 损失、训练/验证循环与检查点管理
 ├── scripts/                      # 完整工作流的命令行入口
+│   ├── add_picture.ps1           # 从 Windows 剪贴板或文件添加编号图片
 │   ├── prepare_data.py           # 数据准备、检查、划分与训练统计量生成
 │   ├── train.py                  # 读取配置并启动完整训练
 │   ├── evaluate.py               # 多回合闭环评估，保存指标和视频
@@ -65,7 +68,8 @@ VLA-Step-by-Step/
 ├── configs/
 │   └── cup.yaml                  # 杯子任务、数据、模型、训练与评估配置
 ├── tests/                        # 关键接口、数据处理和行为验证
-├── assets/                       # 教程插图、小型示例与精选演示
+├── pictures/                     # 全部章节共用的图片，按顺序编号
+├── assets/                       # 其他小型示例和演示素材
 ├── data/                         # 原始/处理后的数据，本地生成，不纳入 Git
 └── outputs/                      # 权重、日志、评估结果，本地生成，不纳入 Git
 ```
@@ -96,7 +100,33 @@ VLA-Step-by-Step/
 - 数据按完整轨迹划分；归一化统计量只从训练集计算。保留轨迹边界和任务身份，防止样本错配。
 - 模型输入只包含图片、指令与机械臂自身状态，环境中的物体真实坐标不作为额外模型输入。
 - 每次正式实验在 `outputs/` 中保存配置、权重、统计量和评估结果，使模型可以复现和重新加载。
-- `assets/` 放教程需要的小型素材；批量评估视频放在 `outputs/`，避免仓库膨胀。
+- 教程图片统一放在 `pictures/`。`assets/` 放其他小型素材，批量评估视频放在 `outputs/`。
 - `data/` 和 `outputs/` 已通过 `.gitignore` 排除；本地 Python 环境、缓存、构建产物和 `.env` 文件也不纳入 Git。
 - Git 不记录空目录；当前 `tests/`、`assets/`、`data/` 和 `outputs/` 为空，仅存在于本地。
 - 文件新增、拆分或职责变化时，同步更新本文。根 README 保留本页入口，不重复维护完整目录树。
+
+## 添加教程图片
+
+在 VS Code 中把仓库根目录作为文件夹打开，然后在任意 Markdown 文件中粘贴截图。仓库设置会让 VS Code 将图片直接保存到根目录的 `pictures/` 并插入相对链接。遇到重名时，VS Code 会给新文件加数字后缀。若复制的是仓库内已有的图片文件，VS Code 会直接引用原文件。
+
+想把粘贴后的图片改成 `00.png`、`01.png`，可以在 VS Code 左侧的资源管理器中选中图片并按 `F2`。仓库设置会自动更新引用该图片的 Markdown 路径。
+
+如果希望自动分配纯数字编号，在 Windows 上复制截图或图片本身，然后在仓库根目录运行下面的命令。脚本会将剪贴板图片保存为 PNG，并输出保存路径。
+
+```powershell
+powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File .\scripts\add_picture.ps1
+```
+
+已有图片文件时，传入路径即可，脚本会保留原格式。
+
+```powershell
+powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File .\scripts\add_picture.ps1 'C:\path\to\image.jpg'
+```
+
+编号由所有章节共享，从 `00` 开始。脚本取现有最大编号加一，例如 `00.png`、`01.jpg`、`02.png`。已引用的图片保持原名，避免 Markdown 链接失效。手动复制图片到目录时，也可以沿用相同的编号规则。
+
+在章节的 `README.md` 中，用相对路径引用图片。下面以第 00 章为例，说明文字换成实际图片的内容。
+
+```markdown
+![红杯与左右两个盘子的仿真画面](../../pictures/00.png)
+```
