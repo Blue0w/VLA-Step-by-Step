@@ -15,7 +15,7 @@
 2. 在「运行时 → 更改运行时类型」里把硬件加速器设为「无」，使用免费 CPU 运行时。
 3. 点击「运行全部」。Notebook 会依次安装依赖、读取实验参数、运行 `demo.py`，最后并排显示两张图片。首次运行需要联网下载代码和依赖。
 
-如果之前的 Colab 会话已经下载了旧版实验代码，打开新版 Notebook 后用一个新的 Colab 运行时运行全部。
+打开新版 Notebook 后点「运行全部」。如果当前 Colab 运行时里已有仓库，安装格会自动从它跟踪的分支更新实验代码。平时只改「动手试一试」里的参数，继续重跑最后两格即可。
 
 代码还在本地、尚未推送时，可以把仓库根目录里的 `pyproject.toml`、`src/` 和 `chapters/` 一起压成 ZIP，确保打开 ZIP 就能看到这三项。将 ZIP 上传到 Colab 的文件面板，再把本地 [lab/colab.ipynb](lab/colab.ipynb) 上传到 Colab 打开。把安装单元格的 `source_zip` 改成上传路径，例如 `'/content/vla-source.zip'`，然后运行全部。
 
