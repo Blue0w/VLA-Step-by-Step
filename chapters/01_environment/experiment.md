@@ -13,9 +13,24 @@
 
 1. [在 Colab 打开 Notebook](https://colab.research.google.com/github/Blue0w/VLA-Step-by-Step/blob/main/chapters/01_environment/lab/colab.ipynb)。如果你在别的分支开发，请在 Colab 的 GitHub 打开方式中选择已经推送实验代码的分支，并把 Notebook 安装单元格的 `git clone` 改为克隆该分支。
 2. 在「运行时 → 更改运行时类型」里把硬件加速器设为「无」，使用免费 CPU 运行时。
-3. 点击「运行全部」。第一格在 Colab 临时环境中安装依赖，第二格运行 `demo.py`，第三格并排显示 PNG。首次运行需要联网下载代码和依赖。
+3. 点击「运行全部」。Notebook 会依次安装依赖、读取实验参数、运行 `demo.py`，最后并排显示两张图片。首次运行需要联网下载代码和依赖。
+
+如果之前的 Colab 会话已经下载了旧版实验代码，打开新版 Notebook 后用一个新的 Colab 运行时运行全部。
 
 代码还在本地、尚未推送时，可以把仓库根目录里的 `pyproject.toml`、`src/` 和 `chapters/` 一起压成 ZIP，确保打开 ZIP 就能看到这三项。将 ZIP 上传到 Colab 的文件面板，再把本地 [lab/colab.ipynb](lab/colab.ipynb) 上传到 Colab 打开。把安装单元格的 `source_zip` 改成上传路径，例如 `'/content/vla-source.zip'`，然后运行全部。
+
+## 动手试一试
+
+在 Colab 的「动手试一试」代码格里每次改一项，然后运行该格和下一格「运行仿真并查看结果」。每次实验都会重新加载初始场景，可以把结果和默认值对照着看。
+
+| 参数 | 可以怎么改 | 观察什么 |
+| --- | --- | --- |
+| `action` | 把第一项 `0.25` 改成 `0.8`，再试 `-0.25` | 看 `Measured displacement (m)` 的第一项，比较 X 方向的位移大小和正负 |
+| `steps` | 从 `1` 改成 `5` | 同一条动作连续发五次，再对照两张图和末端总位移 |
+| `side` | 从 `'left'` 改成 `'right'` | 看 `Task` 里的目标从左盘变成右盘，手写动作仍由 `action` 决定 |
+| `image_size` | 从 `256` 改成 `128` | 看打印的图像形状和画面清晰度 |
+
+可以先只试 `action` 的第一项。其余分量的含义和逐项实验见 [第 02 章 · 机械臂动作](../02_action/README.md)。
 
 ## 在本地运行 Python 脚本
 
@@ -48,6 +63,12 @@ MUJOCO_GL=glx PYOPENGL_PLATFORM=glx LIBGL_ALWAYS_SOFTWARE=1 MPLBACKEND=Agg \
 
 ```bash
 python chapters/01_environment/lab/demo.py
+```
+
+本地脚本也接受同样的参数。例如，沿 X 正方向发出 5 步更大的动作：
+
+```bash
+python chapters/01_environment/lab/demo.py --steps 5 --action 0.8 0 0 0 0 0 -1
 ```
 
 LIBERO 首次运行可能询问是否自定义数据目录，选 `n` 使用默认值即可。脚本默认把两张图保存在仓库根目录的 `outputs/chapter01/`。
