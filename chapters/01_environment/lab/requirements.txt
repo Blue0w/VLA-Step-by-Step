@@ -4,8 +4,10 @@ scipy==1.13.1
 numba==0.61.2
 mujoco==3.2.7
 robosuite==1.4.0
+termcolor==2.5.0
 opencv-python==4.11.0.86
 bddl==1.0.1
+future==1.0.0
 matplotlib==3.9.4
 Pillow==11.3.0
 PyYAML==6.0.2

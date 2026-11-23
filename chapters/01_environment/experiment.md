@@ -25,14 +25,23 @@
 git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git ../LIBERO
 git -C ../LIBERO checkout 8f1084e3132a39270c3a13ebe37270a43ece2a01
 python -m pip install -r chapters/01_environment/lab/requirements.txt
-python -m pip install -e ../LIBERO -e .
+python -m pip install -e .
 ```
 
-无图形桌面的 Ubuntu 或 Debian 可以安装系统渲染库，再用 CPU 离屏渲染：
+运行前，把下载好的 LIBERO 源码目录加到 Python 的模块搜索路径。Colab 会自动设置这一步。
 
 ```bash
-sudo apt-get install -y libosmesa6 libgl1
-MUJOCO_GL=osmesa PYOPENGL_PLATFORM=osmesa python chapters/01_environment/lab/demo.py
+export PYTHONPATH="$(cd ../LIBERO && pwd)"
+```
+
+如果使用 PowerShell，对应的命令是 `$env:PYTHONPATH = (Resolve-Path ../LIBERO).Path`。
+
+无图形桌面的 Ubuntu 或 Debian 可以用虚拟显示器和 CPU 软件渲染，和 Colab 版采用同样的方式：
+
+```bash
+sudo apt-get install -y xvfb xauth libgl1 libglx-mesa0 libgl1-mesa-dri
+MUJOCO_GL=glx PYOPENGL_PLATFORM=glx LIBGL_ALWAYS_SOFTWARE=1 MPLBACKEND=Agg \
+  xvfb-run -a python chapters/01_environment/lab/demo.py
 ```
 
 有图形桌面时可先用 MuJoCo 的默认渲染配置运行：
