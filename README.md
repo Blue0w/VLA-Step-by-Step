@@ -7,4 +7,4 @@ A hands-on VLA tutorial for anyone curious about embodied AI—no AI background 
 
 - [目录与文件职责](docs/project_structure.md)：查找各文件的用途、章节顺序和代码复用规则。
 
-当前处于项目骨架阶段，模型、训练、评估与配置文件尚未实现。
+第 01 章已提供[仿真实验](chapters/01_environment/experiment.md)，可用 Python 脚本或 Colab 运行。

@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vla-step-by-step"
+version = "0.1.0"
+description = "A hands-on tutorial for building a small vision-language-action model"
+requires-python = ">=3.10,<3.13"
+dependencies = ["numpy>=1.26,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

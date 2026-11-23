@@ -1,0 +1,14 @@
+# Python 3.10–3.12. Only the dependencies used by the offscreen demo.
+numpy==1.26.4
+scipy==1.13.1
+numba==0.61.2
+mujoco==3.2.7
+robosuite==1.4.0
+opencv-python==4.11.0.86
+bddl==1.0.1
+matplotlib==3.9.4
+Pillow==11.3.0
+PyYAML==6.0.2
+easydict==1.13
+cloudpickle==3.1.1
+gym==0.25.2

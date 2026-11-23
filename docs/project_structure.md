@@ -1,6 +1,6 @@
 # 目录与文件职责
 
-本文记录项目的文件分工，作为学习和开发时的导航。下面描述的是计划职责，不代表功能已经实现；当前代码与配置文件为空。
+本文记录项目的文件分工，作为学习和开发时的导航。尚未完成的章节在这里列出计划职责。
 
 ## 项目目标
 
@@ -22,7 +22,14 @@ VLA-Step-by-Step/
 │   │   └── README.md             # 任务、整体架构、数据流、预期效果
 │   ├── 01_environment/
 │   │   ├── README.md             # LIBERO 安装、场景、相机和控制接口
-│   │   └── demo.py               # 打开杯子场景、查看图片和观察数据
+│   │   ├── experiment.md         # 预期效果和 Colab／本地运行步骤
+│   │   ├── lab/
+│   │   │   ├── demo.py           # 打开杯子场景、查看图片和观察数据
+│   │   │   ├── colab.ipynb       # 安装依赖、运行实验并显示截图
+│   │   │   └── requirements.txt  # 仿真实验依赖
+│   │   └── media/
+│   │       ├── libero90-red-mug-left.gif  # 笔记内嵌的仿真动图
+│   │       └── libero90-red-mug-left.mp4  # 原始仿真视频
 │   ├── 02_action/
 │   │   ├── README.md             # 动作含义、坐标系、缩放与归一化
 │   │   └── demo.py               # 检查动作、小幅控制与专家动作回放
@@ -79,7 +86,7 @@ VLA-Step-by-Step/
 - 从 `chapters/00_overview/README.md` 开始，按编号学习。每章 README 讲解原理和操作，本章 `demo.py` 提供局部实验。
 - 正式模块只在 `src/vla_step/` 中维护一份。后续模块直接导入前面的实现，不复制各章代码。
 - 例如 `policy.py` 导入 `vision.py`、`language.py` 和 `fusion.py`；`fusion.py` 使用 `attention.py` 提供的基础组件。
-- 章节实验也导入 `vla_step` 包。待包配置完成后，使用 `pip install -e .` 安装项目，避免手动修改导入路径。当前空配置尚不能用于安装。
+- 章节实验也导入 `vla_step` 包。使用 `pip install -e .` 安装项目后可以直接导入，无需修改导入路径。
 - `scripts/` 负责配置和工作流编排，具体算法保留在 `src`，避免与章节演示重复实现。
 
 状态编码第一版放在 `fusion.py`，后续如果需要独立教学或复用，再拆为单独文件，并同步更新本文。

@@ -2,9 +2,9 @@
 
 训练一个能听懂人话、看懂画面并动手干活的VLA机器人模型，如果一上来就在真实世界里拿真机机械臂试错，不仅硬件成本高，机械臂一旦算错动作还可能撞坏桌子甚至伤到人。因此，在把模型部署到真机之前，研究人员几乎都会先在虚拟的仿真世界里完成训练和评测。
 
-![LIBERO-90 仿真中，机械臂抓起红杯并将它放到左盘](./libero90-red-mug-left.gif)
+![LIBERO-90 仿真中，机械臂抓起红杯并将它放到左盘](media/libero90-red-mug-left.gif)
 
-上图是「红杯放左盘」的仿真执行示例，来自 Luo 和 Du 的模型在 LIBERO 中的一次运行。[项目演示页](https://video-to-action.github.io/#lb_qual_tk65) · [MP4 视频](./libero90-red-mug-left.mp4)
+上图是「红杯放左盘」的仿真执行示例，来自 Luo 和 Du 的模型在 LIBERO 中的一次运行。[项目演示页](https://video-to-action.github.io/#lb_qual_tk65) · [MP4 视频](media/libero90-red-mug-left.mp4)
 
 ## 1. 物理引擎、任务环境和数据集有什么区别？
 
@@ -64,18 +64,6 @@ ImageNet 为计算机视觉提供了大规模标注数据与统一评测基准�
 
 此外，**仿真引擎成为Physical AI的关键基础设施。** 在仿真中调整杯子位置或摩擦系数，可以低成本补充训练数据并定位策略的失败边界，不过真实物体的材质形变、夹爪软硬与相机噪声最终仍需真机验证（[仿真到真实的域随机化实验](https://arxiv.org/abs/1703.06907)）。从「给定当前状态与动作，预测下一刻结果」来看，仿真器本质上是一种物理规则驱动的“世界模型”**，与 Dreamer 等**从数据中学习预测的世界模型互为补充（[Dreamer 世界模型论文](https://www.nature.com/articles/s41586-025-08744-2)）。
 
-## 6. 第一次运行要准备什么？
+## 6. 动手实验
 
-先在独立的 Python 环境里按 LIBERO 官方说明安装 LIBERO 和它配套的仿真依赖，包括 MuJoCo 和 robosuite。安装时使用同一套版本，后续也用这个 Python 环境运行 demo。红杯场景需要的任务描述和模型资源由 LIBERO 随代码提供，这一章可以跳过官方说明里的演示数据下载。等到第 03 章读取训练轨迹时，再准备对应任务的数据。[LIBERO 官方安装说明](https://github.com/Lifelong-Robot-Learning/LIBERO#installtion)
-
-安装后，可以在当前环境里先检查环境接口能否导入：
-
-```bash
-python -c "from libero.libero.envs import OffScreenRenderEnv; print('LIBERO import OK')"
-```
-
-看到 `LIBERO import OK` 表示 Python 能导入接口。还要实际运行 demo，才能确认场景可加载、相机可渲染。
-
-demo 的计划是自动加载「红杯放左盘」场景、重置机械臂、读取相机画面和状态，再执行一步示例动作。它会在 `outputs/chapter01/` 保存前后两张图，直接打开图片就能看效果。依赖安装只在首次配置时做，日常运行从加载场景开始。
-
-每个控制量的具体含义留到下一章。[第 02 章 · 动作表示](../02_action/README.md)
+打开红杯场景，执行一步示例动作，再对照前后画面和机械臂末端位置。预期输出、免费 Colab 入口和本地运行命令都在[实验说明](experiment.md)。
