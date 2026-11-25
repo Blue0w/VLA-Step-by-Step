@@ -38,8 +38,11 @@ VLA-Step-by-Step/
 │   │   │   └── demo.py           # Python 实验入口（预留）
 │   │   └── media/                # 本章实验演示素材
 │   ├── 03_dataset/
-│   │   ├── README.md             # 轨迹、训练样本、批次与数据划分
-│   │   └── demo.py               # 可视化轨迹、读取一批样本
+│   │   ├── README.md             # HDF5 轨迹结构、样本切片、轨迹划分与归一化
+│   │   ├── experiment.md         # 查看单条轨迹与样本构造实验说明
+│   │   ├── lab/
+│   │   │   └── demo.py           # Python 实验入口（预留）
+│   │   └── media/                # 本章单条轨迹样本与可视化素材
 │   ├── 04_vision/
 │   │   ├── README.md             # 图片预处理、视觉编码与空间 token
 │   │   └── demo.py               # 展示图片处理过程和视觉特征形状
