@@ -19,7 +19,8 @@ VLA-Step-by-Step/
 │   └── project_structure.md      # 本文：目录、职责、学习顺序和维护规则
 ├── chapters/                     # 按顺序学习：每章笔记和局部实验
 │   ├── 00_overview/
-│   │   └── README.md             # 任务、整体架构、数据流、预期效果
+│   │   ├── README.md             # 任务、整体架构、数据流、预期效果
+│   │   └── media/                # 本章配图
 │   ├── 01_environment/
 │   │   ├── README.md             # LIBERO 安装、场景、相机和控制接口
 │   │   ├── experiment.md         # 预期效果和 Colab／本地运行步骤
@@ -31,8 +32,11 @@ VLA-Step-by-Step/
 │   │       ├── libero90-red-mug-left.gif  # 笔记内嵌的仿真动图
 │   │       └── libero90-red-mug-left.mp4  # 原始仿真视频
 │   ├── 02_action/
-│   │   ├── README.md             # 动作含义、坐标系、缩放与归一化
-│   │   └── demo.py               # 检查动作、小幅控制与专家动作回放
+│   │   ├── README.md             # 状态、7 维动作、控制器缩放与动作块
+│   │   ├── experiment.md         # 平移、旋转与夹爪对照实验说明
+│   │   ├── lab/
+│   │   │   └── demo.py           # Python 实验入口（预留）
+│   │   └── media/                # 本章实验演示素材
 │   ├── 03_dataset/
 │   │   ├── README.md             # 轨迹、训练样本、批次与数据划分
 │   │   └── demo.py               # 可视化轨迹、读取一批样本
@@ -75,7 +79,7 @@ VLA-Step-by-Step/
 ├── configs/
 │   └── cup.yaml                  # 杯子任务、数据、模型、训练与评估配置
 ├── tests/                        # 关键接口、数据处理和行为验证
-├── pictures/                     # 全部章节共用的图片，按顺序编号
+├── pictures/                     # 截图粘贴和编号脚本的默认保存目录
 ├── assets/                       # 其他小型示例和演示素材
 ├── data/                         # 原始/处理后的数据，本地生成，不纳入 Git
 └── outputs/                      # 权重、日志、评估结果，本地生成，不纳入 Git
@@ -107,7 +111,7 @@ VLA-Step-by-Step/
 - 数据按完整轨迹划分；归一化统计量只从训练集计算。保留轨迹边界和任务身份，防止样本错配。
 - 模型输入只包含图片、指令与机械臂自身状态，环境中的物体真实坐标不作为额外模型输入。
 - 每次正式实验在 `outputs/` 中保存配置、权重、统计量和评估结果，使模型可以复现和重新加载。
-- 教程图片统一放在 `pictures/`。`assets/` 放其他小型素材，批量评估视频放在 `outputs/`。
+- 章节专用的图片和视频放在本章的 `media/`。`assets/` 放其他小型素材，批量评估视频放在 `outputs/`。
 - `data/` 和 `outputs/` 已通过 `.gitignore` 排除；本地 Python 环境、缓存、构建产物和 `.env` 文件也不纳入 Git。
 - Git 不记录空目录；当前 `tests/`、`assets/`、`data/` 和 `outputs/` 为空，仅存在于本地。
 - 文件新增、拆分或职责变化时，同步更新本文。根 README 保留本页入口，不重复维护完整目录树。
@@ -135,5 +139,5 @@ powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File .\scripts\add
 在章节的 `README.md` 中，用相对路径引用图片。下面以第 00 章为例，说明文字换成实际图片的内容。
 
 ```markdown
-![红杯与左右两个盘子的仿真画面](../../pictures/00.png)
+![本章配图](media/00.png)
 ```
