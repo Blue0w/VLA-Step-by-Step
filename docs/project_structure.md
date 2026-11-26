@@ -42,8 +42,10 @@ VLA-Step-by-Step/
 │   │   ├── 数据集与样本构造.md    # HDF5 轨迹结构、样本切片、轨迹划分与归一化
 │   │   ├── experiment.md         # 查看单条轨迹与样本构造实验说明
 │   │   ├── lab/
-│   │   │   └── demo.py           # Python 实验入口（预留）
-│   │   └── media/                # 本章单条轨迹样本与可视化素材
+│   │   │   ├── demo.py           # 查看轨迹、打印样本和绘制动作曲线
+│   │   │   ├── colab.ipynb       # 在 Colab 运行数据读取与样本构造实验
+│   │   │   └── requirements.txt  # HDF5 读取与绘图依赖
+│   │   └── media/                # 三条红杯演示的小样本与数据许可证
 │   ├── 04_vision/
 │   │   ├── README.md             # 图片预处理、视觉编码与空间 token
 │   │   └── demo.py               # 展示图片处理过程和视觉特征形状

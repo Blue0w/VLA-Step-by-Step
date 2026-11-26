@@ -14,9 +14,10 @@ A hands-on VLA tutorial for anyone curious about embodied AI—no AI background 
 - [第 02 章 · 机械臂动作](chapters/02_action/机械臂动作.md)
 - [第 03 章 · 数据集与样本构造](chapters/03_dataset/数据集与样本构造.md)
 
-### 仿真实验
+### 动手实验
 
-目前已提供以下章节的仿真实验（支持本地 Python 脚本或免费 Colab 运行）：
+以下实验支持本地 Python 或免费 Colab：
 
 - [第 01 章 · 仿真环境实验](chapters/01_environment/experiment.md)
 - [第 02 章 · 关节空间与任务空间对照实验](chapters/02_action/experiment.md)
+- [第 03 章 · 红杯演示查看器](chapters/03_dataset/experiment.md)
