@@ -19,10 +19,10 @@ VLA-Step-by-Step/
 │   └── project_structure.md      # 本文：目录、职责、学习顺序和维护规则
 ├── chapters/                     # 按顺序学习：每章笔记和局部实验
 │   ├── 00_overview/
-│   │   ├── README.md             # 任务、整体架构、数据流、预期效果
+│   │   ├── VLA是什么.md          # 任务、整体架构、数据流、预期效果
 │   │   └── media/                # 本章配图
 │   ├── 01_environment/
-│   │   ├── README.md             # LIBERO 安装、场景、相机和控制接口
+│   │   ├── 仿真环境与演示数据.md  # LIBERO 安装、场景、相机和控制接口
 │   │   ├── experiment.md         # 预期效果和 Colab／本地运行步骤
 │   │   ├── lab/
 │   │   │   ├── demo.py           # 打开杯子场景、查看图片和观察数据
@@ -32,14 +32,14 @@ VLA-Step-by-Step/
 │   │       ├── libero90-red-mug-left.gif  # 笔记内嵌的仿真动图
 │   │       └── libero90-red-mug-left.mp4  # 原始仿真视频
 │   ├── 02_action/
-│   │   ├── README.md             # 状态、7 维动作、控制器缩放与动作块
+│   │   ├── 机械臂动作.md         # 状态、7 维动作、控制器缩放与动作块
 │   │   ├── experiment.md         # 关节空间与任务空间对照实验说明
 │   │   ├── lab/
 │   │   │   ├── demo.py           # 执行两组试验并记录关节和末端变化
 │   │   │   └── colab.ipynb       # 在 Colab 运行两种控制方式的对照
 │   │   └── media/                # 本章实验演示素材
 │   ├── 03_dataset/
-│   │   ├── README.md             # HDF5 轨迹结构、样本切片、轨迹划分与归一化
+│   │   ├── 数据集与样本构造.md    # HDF5 轨迹结构、样本切片、轨迹划分与归一化
 │   │   ├── experiment.md         # 查看单条轨迹与样本构造实验说明
 │   │   ├── lab/
 │   │   │   └── demo.py           # Python 实验入口（预留）
@@ -91,7 +91,7 @@ VLA-Step-by-Step/
 
 ## 如何阅读与复用代码
 
-- 从 `chapters/00_overview/README.md` 开始，按编号学习。每章 README 讲解原理和操作，本章 `demo.py` 提供局部实验。
+- 从[第 00 章 · VLA 是什么](../chapters/00_overview/VLA是什么.md)开始，按编号学习。章节笔记讲解原理和操作，本章 `demo.py` 提供局部实验。
 - 正式模块只在 `src/vla_step/` 中维护一份。后续模块直接导入前面的实现，不复制各章代码。
 - 例如 `policy.py` 导入 `vision.py`、`language.py` 和 `fusion.py`；`fusion.py` 使用 `attention.py` 提供的基础组件。
 - 章节实验也导入 `vla_step` 包。使用 `pip install -e .` 安装项目后可以直接导入，无需修改导入路径。
@@ -140,7 +140,7 @@ powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File .\scripts\add
 
 编号由所有章节共享，从 `00` 开始。脚本取现有最大编号加一，例如 `00.png`、`01.jpg`、`02.png`。已引用的图片保持原名，避免 Markdown 链接失效。手动复制图片到目录时，也可以沿用相同的编号规则。
 
-在章节的 `README.md` 中，用相对路径引用图片。下面以第 00 章为例，说明文字换成实际图片的内容。
+在章节笔记中，用相对路径引用图片。下面以第 00 章为例，说明文字换成实际图片的内容。
 
 ```markdown
 ![本章配图](media/00.png)
