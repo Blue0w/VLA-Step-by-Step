@@ -7,4 +7,7 @@ A hands-on VLA tutorial for anyone curious about embodied AI—no AI background 
 
 - [目录与文件职责](docs/project_structure.md)：查找各文件的用途、章节顺序和代码复用规则。
 
-第 01 章已提供[仿真实验](chapters/01_environment/experiment.md)，可用 Python 脚本或 Colab 运行。
+目前已提供以下章节的仿真实验（支持本地 Python 脚本或免费 Colab 运行）：
+
+- [第 01 章 · 仿真环境实验](chapters/01_environment/experiment.md)
+- [第 02 章 · 关节空间与任务空间对照实验](chapters/02_action/experiment.md)
