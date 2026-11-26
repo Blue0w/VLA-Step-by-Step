@@ -26,8 +26,8 @@ VLA-Step-by-Step/
 │   │   ├── experiment.md         # 预期效果和 Colab／本地运行步骤
 │   │   ├── lab/
 │   │   │   ├── demo.py           # 打开杯子场景、查看图片和观察数据
-│   │   │   ├── colab.ipynb       # 第 01、02 章共用的 Colab 实验
-│   │   │   └── requirements.txt  # 仿真实验依赖
+│   │   │   ├── colab.ipynb       # 在 Colab 打开场景并执行手写动作
+│   │   │   └── requirements.txt  # 第 01、02 章共用的仿真实验依赖
 │   │   └── media/
 │   │       ├── libero90-red-mug-left.gif  # 笔记内嵌的仿真动图
 │   │       └── libero90-red-mug-left.mp4  # 原始仿真视频
@@ -35,7 +35,8 @@ VLA-Step-by-Step/
 │   │   ├── README.md             # 状态、7 维动作、控制器缩放与动作块
 │   │   ├── experiment.md         # 关节空间与任务空间对照实验说明
 │   │   ├── lab/
-│   │   │   └── demo.py           # 执行两组试验并记录关节和末端变化
+│   │   │   ├── demo.py           # 执行两组试验并记录关节和末端变化
+│   │   │   └── colab.ipynb       # 在 Colab 运行两种控制方式的对照
 │   │   └── media/                # 本章实验演示素材
 │   ├── 03_dataset/
 │   │   ├── README.md             # HDF5 轨迹结构、样本切片、轨迹划分与归一化

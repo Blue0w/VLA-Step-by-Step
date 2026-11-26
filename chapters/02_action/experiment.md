@@ -13,9 +13,11 @@
 
 ## 在免费 Colab 上运行
 
-1. [在 Colab 打开第 01、02 章共用的 Notebook](https://colab.research.google.com/github/Blue0w/VLA-Step-by-Step/blob/main/chapters/01_environment/lab/colab.ipynb)，硬件加速器选「无」。
-2. 运行开头的「准备仿真环境」，再运行「第 02 章」下的两个代码格。想从第 01 章开始，也可以点「运行全部」。
-3. 先跑默认值，再把 `joint_number` 从 `2` 改成 `1`。重跑本章两个代码格，对照末端位移的方向。
+1. [在 Colab 打开第 02 章 Notebook](https://colab.research.google.com/github/Blue0w/VLA-Step-by-Step/blob/main/chapters/02_action/lab/colab.ipynb)，硬件加速器选「无」。
+2. 点「运行全部」。Notebook 会准备仿真环境、运行两组试验，再显示日志和前后对照图。
+3. 先跑默认值，再把 `joint_number` 从 `2` 改成 `1`。重跑「动手试一试」和「运行对照并查看结果」两格，对照末端位移的方向。
+
+本章 Notebook 可以独立运行，依赖清单沿用第 01 章。如果代码还在本地，可以参照第 01 章的源码 ZIP 上传步骤，打开本章的 [`lab/colab.ipynb`](lab/colab.ipynb)。
 
 ## 在本地运行
 

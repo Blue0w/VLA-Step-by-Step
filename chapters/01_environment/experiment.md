@@ -13,9 +13,9 @@
 
 1. [在 Colab 打开 Notebook](https://colab.research.google.com/github/Blue0w/VLA-Step-by-Step/blob/main/chapters/01_environment/lab/colab.ipynb)。如果你在别的分支开发，请在 Colab 的 GitHub 打开方式中选择已经推送实验代码的分支，并把 Notebook 安装单元格的 `git clone` 改为克隆该分支。
 2. 在「运行时 → 更改运行时类型」里把硬件加速器设为「无」，使用免费 CPU 运行时。
-3. 点击「运行全部」，可以依次完成第 01、02 章的两个实验。只看本章时，运行开头的「准备仿真环境」，再运行「第 01 章」下面的两个代码格。首次运行需要联网下载代码和依赖。
+3. 点击「运行全部」。Notebook 会依次安装依赖、读取实验参数、运行 `demo.py`，最后并排显示两张图片。首次运行需要联网下载代码和依赖。
 
-打开新版 Notebook 后先运行安装格。如果当前 Colab 运行时里已有仓库，安装格会自动从它跟踪的分支更新实验代码。之后修改参数，只需重跑本章的参数格和运行格。
+打开新版 Notebook 后点「运行全部」。如果当前 Colab 运行时里已有仓库，安装格会自动从它跟踪的分支更新实验代码。平时只改「动手试一试」里的参数，继续重跑最后两格即可。
 
 代码还在本地、尚未推送时，可以把仓库根目录里的 `pyproject.toml`、`src/` 和 `chapters/` 一起压成 ZIP，确保打开 ZIP 就能看到这三项。将 ZIP 上传到 Colab 的文件面板，再把本地 [lab/colab.ipynb](lab/colab.ipynb) 上传到 Colab 打开。把安装单元格的 `source_zip` 改成上传路径，例如 `'/content/vla-source.zip'`，然后运行全部。
 
@@ -79,7 +79,7 @@ LIBERO 首次运行可能询问是否自定义数据目录，选 `n` 使用默�
 | --- | --- |
 | [`lab/demo.py`](lab/demo.py) | 执行本章实验，打印观察和位移，保存两张相机图像。 |
 | [`environment.py`](../../src/vla_step/environment.py) | 封装场景加载和观察数据，供本章和后续章节复用。 |
-| [`lab/colab.ipynb`](lab/colab.ipynb) | 第 01、02 章共用的 Colab Notebook，安装依赖并运行两章各自的实验脚本。 |
+| [`lab/colab.ipynb`](lab/colab.ipynb) | 安装云端依赖，调用同一份 Python demo，再把截图显示在 Notebook 里。 |
 | [`lab/requirements.txt`](lab/requirements.txt) | 记录 Python demo 和 Colab 共用的依赖版本。 |
 
 [返回本章笔记](README.md) · [下一章：动作表示](../02_action/README.md)
