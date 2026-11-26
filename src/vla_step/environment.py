@@ -18,12 +18,16 @@ class Observation:
     eef_position: np.ndarray
     eef_quaternion: np.ndarray
     gripper_position: np.ndarray
+    joint_position: np.ndarray
 
 
 class CupEnvironment:
     """Load a LIBERO-90 cup task without loading demonstration data."""
 
-    def __init__(self, side: str = "left", image_size: int = 256, seed: int = 0):
+    def __init__(
+        self, side: str = "left", image_size: int = 256, seed: int = 0, *,
+        controller: str = "OSC_POSE",
+    ):
         from libero.libero import get_libero_path
         from libero.libero.envs import OffScreenRenderEnv
         from robosuite.macros import IMAGE_CONVENTION
@@ -33,6 +37,7 @@ class CupEnvironment:
         )
         self._env = OffScreenRenderEnv(
             bddl_file_name=str(task_file),
+            controller=controller,
             camera_names=["agentview"],
             camera_heights=image_size,
             camera_widths=image_size,
@@ -51,10 +56,17 @@ class CupEnvironment:
             eef_position=raw["robot0_eef_pos"].copy(),
             eef_quaternion=raw["robot0_eef_quat"].copy(),
             gripper_position=raw["robot0_gripper_qpos"].copy(),
+            joint_position=raw["robot0_joint_pos"].copy(),
         )
 
-    def reset(self) -> Observation:
-        return self._observation(self._env.reset())
+    def reset(self, initial_state: np.ndarray | None = None) -> Observation:
+        raw = self._env.reset()
+        if initial_state is not None:
+            raw = self._env.set_init_state(initial_state)
+        return self._observation(raw)
+
+    def get_sim_state(self) -> np.ndarray:
+        return self._env.get_sim_state().copy()
 
     def step(self, action: np.ndarray) -> tuple[Observation, float, bool, dict]:
         raw, reward, done, info = self._env.step(action)
